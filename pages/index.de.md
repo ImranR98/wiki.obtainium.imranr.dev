@@ -15,7 +15,7 @@ Dieses Konzept ist zwar einfach, aber die große Vielfalt an unterstützten Quel
 
 ## App-Konfigurationen finden
 
-Von der Gemeinschaft erstellte App-Konfigurationen finden Sie unter [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev). Wenn Sie die Konfiguration für eine gewünschte Anwendung nicht finden können, können Sie eine Anfrage im zugehörigen [Diskussionsregisterkarte](https://github.com/ImranR98/apps.obtainium.imranr.dev/discussions/new?category=app-requests) stellen oder Sie tragen selbst eigene Konfigurationen zur Website bei, indem Sie einen Pull-Request in [diesem Repository](https://github.com/ImranR98/apps.obtainium.imranr.dev) erstellen.
+Von der Gemeinschaft erstellte App-Konfigurationen finden Sie unter [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev). Wenn Sie die Konfiguration für eine gewünschte Anwendung nicht finden können, können Sie eine Anfrage im zugehörigen [Diskussionsregisterkarte](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues) stellen oder Sie tragen selbst eigene Konfigurationen zur Website bei, indem Sie einen Pull-Request in [diesem Repository](https://github.com/ImranR98/apps.obtainium.imranr.dev) erstellen.
 
 ## Installation
 

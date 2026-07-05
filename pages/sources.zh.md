@@ -71,7 +71,7 @@ GitHub 源支持**搜索**，并允许您按最低星标数筛选结果。
 ### 创建 GitHub 个人访问令牌 {#creating-a-github-personal-access-token}
 
 1. 登录 [GitHub](https://github.com)。
-2. 进入开发者设置中的 [Fine-grained tokens](https://github.com/settings/tokens?type=beta)。
+2. 进入开发者设置中的 [Fine-grained tokens](https://github.com/settings/personal-access-tokens)。
 3. 选择 **Generate new token**。
 4. 给 Token 命名并设置有效期。
 5. 滚动到底部，选择 **Generate token**。

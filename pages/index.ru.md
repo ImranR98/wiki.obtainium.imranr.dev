@@ -18,7 +18,7 @@ title: Главная
 
 Вы можете найти коллективно собранные конфигурации приложений на сайте [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev).
 
-Если вы не можете найти конфигурацию для приложения, которое вы хотите получить, не стесняйтесь оставлять запрос на [странице обсуждений](https://github.com/ImranR98/apps.obtainium.imranr.dev/discussions/new?category=app-requests).
+Если вы не можете найти конфигурацию для приложения, которое вы хотите получить, не стесняйтесь оставлять запрос на [странице обсуждений](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues).
 
 Или добавьте конфигурации на сайт, создав запрос (Pull request) в [этом репозитории](https://github.com/ImranR98/apps.obtainium.imranr.dev).
 

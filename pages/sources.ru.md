@@ -72,7 +72,7 @@ GitHub также позволяет разработчикам размещат
 
 1. Войдите в свой аккаунт на [GitHub](https://github.com).
 
-2. Перейдите в раздел [Fine-grained tokens](https://github.com/settings/tokens?type=beta) в настройках для разработчиков.
+2. Перейдите в раздел [Fine-grained tokens](https://github.com/settings/personal-access-tokens) в настройках для разработчиков.
 
 3. Нажмите **Сгенерировать новый токен** (Generate new token).
 

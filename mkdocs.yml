@@ -178,6 +178,7 @@ plugins:
               made_with: 使用
               missing_translation: '本頁尚未翻譯成繁體中文，您目前看到的是英文版本。'
               help_translate: '協助翻譯'
+
         - locale: ru
           name: 🇷🇺 Русский
           site_description: "Справочная страница для Obtainium"
