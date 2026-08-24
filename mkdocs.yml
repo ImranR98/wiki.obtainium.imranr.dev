@@ -143,6 +143,41 @@ plugins:
               missing_translation: '本页尚无简体中文（中国大陆）翻译，您正在浏览的是英文原文。'
               help_translate: '协助翻译'
 
+        - locale: zh-TW
+          name: 🇹🇼 繁體中文
+          site_name: "Obtainium Wiki"
+          site_description: "Obtainium 說明與支援"
+          nav_translations:
+            Home: 首頁
+            UI Overview: 介面概覽
+            How Apps are Tracked: 如何追蹤應用程式
+            App Sources: 應用程式來源
+          extra:
+            social:
+              - icon: simple/github
+                link: https://github.com/ImranR98/
+                name: GitHub
+              - icon: simple/mastodon
+                link: https://freeradical.zone/@imran
+                name: Mastodon
+              - icon: simple/kofi
+                link: https://ko-fi.com/imranr
+                name: Ko-fi
+              - icon: material/heart
+                link: https://github.com/sponsors/ImranR98
+                name: 透過 GitHub Sponsors 贊助
+              - icon: material/web
+                link: https://imranr.dev/
+                name: 官方網站
+            translations:
+              made_by: 製作者
+              open_an_issue: 建立 Issue
+              crowdsourced_app_configurations: 群眾協作的應用程式設定
+              obtainium_website: Obtainium 官方網站
+              made_with: 使用
+              missing_translation: '本頁尚未翻譯成繁體中文，您目前看到的是英文版本。'
+              help_translate: '協助翻譯此頁面'
+
         - locale: "null"
           name: ➕ Add
           build: false
