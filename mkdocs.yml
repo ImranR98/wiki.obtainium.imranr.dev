@@ -172,7 +172,7 @@ plugins:
             translations:
               made_by: Made by
               open_an_issue: 建立 Issue
-              crowdsourced_app_configurations: 群眾協作的應用程式設定
+              crowdsourced_app_configurations: 由社群提供的應用程式設定
               obtainium_website: Obtainium 官方網站
               made_with: 使用
               missing_translation: '本頁尚未翻譯成繁體中文，您目前看到的是英文版本。'
