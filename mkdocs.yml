@@ -168,15 +168,15 @@ plugins:
                 name: 透過 GitHub Sponsors 贊助
               - icon: material/web
                 link: https://imranr.dev/
-                name: 官方網站
+                name: 官網
             translations:
-              made_by: 製作者
+              made_by: Made by
               open_an_issue: 建立 Issue
               crowdsourced_app_configurations: 群眾協作的應用程式設定
               obtainium_website: Obtainium 官方網站
               made_with: 使用
               missing_translation: '本頁尚未翻譯成繁體中文，您目前看到的是英文版本。'
-              help_translate: '協助翻譯此頁面'
+              help_translate: '協助翻譯'
 
         - locale: "null"
           name: ➕ Add
