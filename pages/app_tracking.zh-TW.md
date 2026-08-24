@@ -23,7 +23,7 @@ description: 如何在 Obtainium 中追蹤應用程式
 
 在理想的情況下，每個應用程式來源都能以簡單明瞭的方式提供所需的全部資訊——每個給定的連結只提供一個應用程式，並以標準格式提供所需的全部資訊。但實際情況往往並非如此——即使是同一個應用程式來源，也有許多不同的應用程式發布處理方式，因此不可能有一套固定的步驟來處理所有應用程式。因此，在新增應用程式時，您會看到各種附加選項，這些選項可用於修改擷取應用程式資訊的方式。雖然預設值適用於大多數應用程式，但您可能需要瞭解這些選項以處理極端情況，更多資訊請參閱下面的[應用程式來源](sources.md)部分。
 
-注意：Obtainium 中的許多篩選條件設定（包括許多特定於應用程式來源的可選篩選條件）都使用了[規則運算式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions)——你應該熟悉這些。
+注意：Obtainium 中的許多篩選條件設定（包括許多特定於應用程式來源的可選篩選條件）都使用了[規則運算式](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Regular_expressions)——你應該熟悉這些。
 
 ### 版本偵測 {#version-detection}
 
@@ -42,7 +42,7 @@ Obtainium 在追蹤當前已安裝的應用程式時，會從 Android 中取得�
 3. 來自 Tor 官網的 [Tor](https://www.torproject.org/download/)：
 
     - **來自 Android 本地的應用程式版本編號：** `102.2.1-Release (12.5.6)`
-    - **來自應用程式來源的版本編號：** 無（該 HTML 來源未提供版本字串，因此使用連結雜湊值作為“偽版本”）
+    - **來自應用程式來源的版本編號：** 無（該 HTML 來源未提供版本字串，因此使用連結哈希值作為“偽版本”）
 
 4. 來自 GitHub 來源的 [Quotable](https://github.com/Lijukay/Qwotable/releases/tag/v10)：
 
