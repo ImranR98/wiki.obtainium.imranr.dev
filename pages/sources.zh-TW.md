@@ -71,7 +71,7 @@ GitHub 來源支援**搜尋**，並允許您按最低星標數篩選結果。
 ### 建立 GitHub 個人存取權杖 {#creating-a-github-personal-access-token}
 
 1. 登錄 [GitHub](https://github.com)。
-2. 進入開發者設定中的 [Fine-grained tokens](https://github.com/settings/tokens?type=beta)。
+2. 進入開發者設定中的 [Fine-grained tokens](https://github.com/settings/personal-access-tokens)。
 3. 選擇 **Generate new token**。
 4. 給 Token 命名並設定有效期。
 5. 滾動到底部，選擇 **Generate token**。

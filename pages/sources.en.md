@@ -72,7 +72,7 @@ The GitHub source supports **search** and lets you filter results by a minimum s
 
 1. Login to [GitHub](https://github.com).
 
-2. Go to the [Fine-grained tokens](https://github.com/settings/tokens?type=beta) section in developer settings.
+2. Go to the [Fine-grained tokens](https://github.com/settings/personal-access-tokens) section in developer settings.
 
 3. Select **Generate new token**.
 

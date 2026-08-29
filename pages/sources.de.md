@@ -71,7 +71,7 @@ Die GitHub-Quelle unterstützt die **Suche** und ermöglicht es Ihnen, die Ergeb
 ### Erstellen eines GitHub Personal Access Tokens
 
 1. Melden Sie sich bei [GitHub](https://github.com) an.
-2. Gehen Sie zum Abschnitt [Feingranulare Tokens](https://github.com/settings/tokens?type=beta) in den Entwicklereinstellungen.
+2. Gehen Sie zum Abschnitt [Feingranulare Tokens](https://github.com/settings/personal-access-tokens) in den Entwicklereinstellungen.
 3. Wählen Sie **Neues Token generieren**.
 4. Geben Sie Ihrem Token einen Namen und legen Sie ein Ablaufdatum fest.
 5. Scrollen Sie nach unten und wählen Sie **Token generieren**.
