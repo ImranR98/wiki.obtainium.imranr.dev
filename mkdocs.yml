@@ -10,6 +10,7 @@ nav:
   - UI Overview: ui_overview.md
   - How Apps are Tracked: app_tracking.md
   - App Sources: sources.md
+  - Deep Links: deep_links.md
 
 theme:
   name: material
