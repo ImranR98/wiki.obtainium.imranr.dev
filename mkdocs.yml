@@ -153,6 +153,7 @@ plugins:
             UI Overview: 介面概覽
             How Apps are Tracked: 如何追蹤應用程式
             App Sources: 應用程式來源
+            Deep Links: 深層連結
           extra:
             social:
               - icon: simple/github
