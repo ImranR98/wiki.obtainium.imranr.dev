@@ -1,0 +1,17 @@
+{% set translations = config.extra.translations %}
+
+{% if page.meta and i18n_page_locale != "en" and i18n_file_locale != i18n_page_locale %}
+  <div class="translation-banner">
+    <a href="https://github.com/ImranR98/Obtainium-Wiki/blob/main/CONTRIBUTING.md" 
+       target="_blank" 
+       class="translation-banner__link">
+      <span class="twemoji translation-banner__icon">
+        {% include ".icons/material/translate.svg" %}
+      </span>
+      <div class="translation-banner__content">
+        <p class="translation-banner__title"> {{ translations.missing_translation | default('This page has not yet been translated. You are viewing the English version.') }} </p>
+        <p class="translation-banner__text"> {{ translations.help_translate | default('Help translate this page') }} </p>
+      </div>
+    </a>
+  </div>
+{% endif %}

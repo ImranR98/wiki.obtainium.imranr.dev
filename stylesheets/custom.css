@@ -1,0 +1,75 @@
+/* Download badges styling */
+.md-content img[alt*="Get it on"] {
+    height: 75px !important;
+    margin: 10px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+.md-content img[alt*="Get it on"]:hover {
+    transform: scale(1.05);
+}
+
+/* Copyright section styling */
+.md-copyright {
+    padding: 1rem 0;
+}
+  
+.md-copyright__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.md-copyright__separator {
+    color: var(--md-primary-fg-color--light);
+}
+
+.md-copyright__link {
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+    transition: color 125ms;
+}
+
+.md-copyright__link:hover {
+    color: var(--md-accent-fg-color);
+    text-decoration: underline;
+}
+
+/* Translation banner styling */
+.translation-banner {
+    background-color: rgba(255, 229, 100, 0.1);
+    border-left: 4px solid #ffd43b;
+    margin: 1rem 0;
+    transition: background-color 0.2s;
+}
+
+.translation-banner:hover {
+    background-color: rgba(255, 229, 100, 0.2);
+}
+
+.translation-banner__link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.translation-banner__icon {
+    margin-right: 1rem;
+    color: #ffa000;
+}
+
+.translation-banner__content p {
+    margin: 0;
+}
+
+.translation-banner__title {
+    font-weight: 700;
+}
+
+.translation-banner__text {
+    opacity: 0.8;
+}

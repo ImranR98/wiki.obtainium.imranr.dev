@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.imranr.dev/js/pa-9dhi5zvu05cL6nT8Gfd0d.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+{% endblock %}
+
+{% block content %}
+  {% include "partials/translation_announcement.html" %}
+  {{ super() }}
+{% endblock %}
