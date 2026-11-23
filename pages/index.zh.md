@@ -18,7 +18,7 @@ Obtainium 的核心目标是实现直接从应用“源”（可直接下载应�
 
 您可以在 [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev) 上找到基于众包的应用配置。
 
-如果找不到想要的应用配置，请随时在[讨论页](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues)上提出议题请求。
+如果找不到想要的应用配置，请随时在[问题页面](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues)上提出请求。
 
 或者，在[此项目仓库](https://github.com/ImranR98/apps.obtainium.imranr.dev)上创建拉取请求，为网站贡献一些配置。
 
@@ -44,7 +44,7 @@ Obtainium 的核心目标是实现直接从应用“源”（可直接下载应�
 
 ## 应用内链接 {#in-app-links}
 
-您可以在 Obtainium 的设置页面底部找到本 Wiki、源代码和众包应用配置的链接。
+在 Obtainium 中，本 Wiki、应用源代码和应用日志的链接位于“设置”→“关于”中。众包应用配置的链接位于“添加应用”页面。
 
 ## 限制 {#limitations}
 

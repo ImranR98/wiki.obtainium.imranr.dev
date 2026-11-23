@@ -24,7 +24,7 @@ description: 一些应用源的特定信息
 - 开源——通用：
     - [GitHub](https://github.com/)
     - [GitLab](https://gitlab.com/)
-    - [Codeberg](https://codeberg.org/)（Forgejo）
+    - [Forgejo](https://forgejo.org/)（[Codeberg](https://codeberg.org/)）
     - [F-Droid](https://f-droid.org/)
     - 第三方 F-Droid 仓库
     - [IzzyOnDroid](https://android.izzysoft.de/)
@@ -36,12 +36,14 @@ description: 一些应用源的特定信息
     - [itch.io](https://itch.io/)
     - [Huawei AppGallery](https://appgallery.huawei.com/)
     - [腾讯应用宝](https://sj.qq.com/)
-    - [Vivo 应用商店](https://h5appstore.vivo.com.cn/)
+    - [Vivo 应用商店 (CN)](https://h5.appstore.vivo.com.cn/)
     - [RuStore](https://rustore.ru/)
+    - [Farsroid](https://farsroid.com/)
+    - [Samsung Galaxy Store](https://galaxystore.samsung.com/)
+    - [LiteAPKs](https://liteapks.com/)
     - [Apk4Free](https://apk4free.net/)
     - [CoolAPK](https://www.coolapk.com/)
-    - [Farsroid](https://farsroid.com/)
-    - [LiteAPKs](https://liteapks.com/)
+    - [SourceForge](https://sourceforge.net/)
     - Jenkins Jobs
     - [APKMirror](https://apkmirror.com/)（仅跟踪）
     - [RockMods](https://rockmods.net/)（仅跟踪）
@@ -79,7 +81,7 @@ GitHub 源支持**搜索**，并允许您按最低星标数筛选结果。
 
 ## GitLab {#gitlab}
 
-GitLab 发行版中的 APK 有时会以非标准方式附加，导致 Obtainium 无法轻松获取。GitLab API 提供了更可靠的提取 APK 的方式，但没有 API 密钥就无法使用。虽然这对大多数 GitLab 仓库来说都不是问题，但您可以在 Obtainium 的设置中添加自己的个人访问令牌，以便在极端情况下更可靠地提取 APK。
+GitLab 发行版中的 APK 有时会以非标准方式附加，导致 Obtainium 无法轻松获取。GitLab API 提供了更可靠的提取 APK 的方式。公共仓库通常无需身份验证即可使用，但个人访问令牌有助于处理私有仓库和特殊情况。您可以在 Obtainium 的设置中添加自己的个人访问令牌。
 
 与 GitHub 一样，GitLab 也允许开发者托管同一应用的旧版本，因此我们会根据情况提供其它选项。
 
@@ -98,7 +100,7 @@ GitLab 发行版中的 APK 有时会以非标准方式附加，导致 Obtainium 
 
 ## F-Droid 第三方仓库 {#f-droid-third-party-repo}
 
-与大多数其它来源不同，F-Droid 仓库在同一链接下包含多个应用的信息。这意味着，除了版本库链接之外，您还必须单独在"应用 ID 或名称"字段中提供所需的应用名称或应用包名。如果您不确定特定仓库中包含哪些应用，可以使用[导入/导出](ui_overview.md/#importexport-page)上的 "搜索来源"按钮来查找。
+与大多数其它来源不同，F-Droid 仓库在同一链接下包含多个应用的信息。这意味着，除了版本库链接之外，您还必须单独在"应用 ID 或名称"字段中提供所需的应用名称或应用包名。如果您不确定特定仓库中包含哪些应用，可以使用[添加应用页面](ui_overview.md/#add-app-page)中的搜索功能来查找。
 
 请注意，Obtainium 无法自动判断给定链接是否指向第三方 F-Droid 仓库。这意味着，默认情况下，向 Obtainium 添加第三方 F-Droid 仓库将导致错误使用 [HTML 源](#html)（Obtainium 在无法识别任何链接时使用的后备源）。您必须从"覆盖来源"下拉菜单中手动选择"F-Droid 第三方仓库"，才能解决这个问题。
 
@@ -113,6 +115,14 @@ APKMirror 是一个“仅跟踪”源。这意味着，虽然您可以将 APKMir
 
 由于 APKMirror 使用 RSS 源检测新版本，您可以使用“按正则表达式筛选版本标题”选项来缩小其跟踪的版本范围。
 
+## Samsung Galaxy Store
+
+Samsung Galaxy Store 作为原生来源受到支持。添加 Galaxy Store 应用链接，或在“添加应用”页面搜索应用。该来源提供全球和中国搜索配置。可以使用设备型号和 CSC 选项请求适合您设备的变体；部分应用需要 Samsung 账户，无法匿名下载。使用 Shizuku 或 Root 时，可以将 Samsung Galaxy Store 设为安装来源。
+
+## SourceForge
+
+SourceForge 作为原生来源受到支持，会读取项目的 RSS 源。添加项目页面链接或其文件区域下的路径。Obtainium 会从发行路径中提取版本，并选择匹配的 APK/容器文件。
+
 ## HTML {#html}
 
 “HTML”源是一个后备选项，可用于任何 Obtainium 不明确支持的应用源。由于其灵活性，它也是支持小众、不太流行的源，而不会使 Obtainium 变得臃肿的一种方式。
@@ -120,11 +130,11 @@ APKMirror 是一个“仅跟踪”源。这意味着，虽然您可以将 APKMir
 HTML 源的工作原理：
 
 1. 首先向用户提供的源链接发送请求，并将响应解析为 HTML。然后在页面上查找链接。
-2. 过滤掉某些链接。默认情况下，这是任何不以 `.apk` 结尾的链接，但您可以使用“自定义 APK 链接过滤器”来指定自己的过滤器。
+2. 过滤掉某些链接。默认情况下，这是任何不指向 APK 或 APK 容器（`.apk`、`.xapk`、`.apkm` 或 `.apks`）的链接，但您可以使用“自定义 APK 链接过滤器”来指定自己的过滤器。
 3. 对剩余链接进行排序。这种排序是对整个链接进行字母数字排序，但你也可以选择只对链接的最后一段进行排序。最后一段通常是文件名，但如果在步骤 2 中使用了自己的过滤器，则可能不是。
 4. 在所有剩余链接上应用另一个可选的用户定义过滤器。该过滤器与第 2 步中的过滤器的区别在于，它是所有应用源都有的更通用的过滤器——它继承自父类 `AppSource`（[应用源](#app-sources)中描述的 APK 过滤器选项）。在某些情况下使用它可能比在步骤 2 中使用一个更复杂的正则表达式更简单（示例请参见[该评论](https://github.com/ImranR98/Obtainium/issues/954#issuecomment-1745977857)）。与中间链接选项结合使用时也很有用。
 5. 在剩余的链接中，它会选择第一个（如果启用了反向选项，则选择最后一个）。
-6. 现在我们有了最终的 APK 链接，我们需要一个唯一的发布 ID 与之匹配，这样当 ID 发生变化时，我们就知道该应用有更新可用。对于其它源，唯一发布 ID 就是应用的版本，但对于 HTML 源，可能无法提取版本字符串。因此，默认情况下，将是链接的哈希值。有三种伪版本化方法可用：
+6. 现在我们有了最终的 APK 链接，我们需要一个唯一的发布 ID 与之匹配，这样当 ID 发生变化时，我们就知道该应用有更新可用。对于其它源，唯一发布 ID 就是应用的版本，但对于 HTML 源，可能无法提取版本字符串。因此，默认情况下，使用 APK 文件一部分的哈希值。有三种伪版本化方法可用：
     - **部分 APK 哈希**（默认）：APK 文件部分的哈希值。这比链接哈希更可靠，因为它取决于文件内容，但需要下载部分 APK 进行计算。
     - **APK 链接哈希**：APK 下载链接的哈希值。链接更改时此值会更改。
     - **ETag**：使用来自 APK 下载响应的 HTTP ETag 标头。当服务器提供稳定的 ETag 但下载链接本身在不同版本间不变时，此方法很有用。
@@ -134,6 +144,8 @@ HTML 源的工作原理：
     - 版本提取功能其实并无必要——使用链接哈希值更简单、更可靠。有些用户可能只是想要它，因为真实版本看起来更漂亮/更准确，而且它允许 Obtainium 在大多数情况下使用[版本检测](app_tracking.md/#version-detection)。
 
 您还可以为 HTML 源设置**自定义请求标头**。当目标网站需要特定标头才能正确提供 APK 时，您可以覆盖默认标头（例如 User-Agent）。
+
+如果网站会在 HTML 页面上显示发行日期，HTML 源可以使用发行日期正则表达式、匹配组和日期格式来提取它。启用“使用发布日期作为版本”时，提取的日期可以用作版本。
 
 至于**中间链接**过滤器，如果使用该过滤器（请参阅 [issue #820](https://github.com/ImranR98/Obtainium/issues/820)，了解在何种情况下该过滤器有用），HTML 源会在正常流程之前添加一个预备步骤：
 
@@ -150,10 +162,11 @@ HTML 源的工作原理：
 
 ## 关于其它应用源的备注 {#notes-for-various-other-sources}
 
-- HTML：HTML 源包括默认的请求标头，这些标头应适用于大多数网站。在某些情况下（例如 [SourceForge](https://sourceforge.net/)），您可能需要删除它们（也有可能需要自定义）。
+- HTML：HTML 源包括默认的请求标头，这些标头应适用于大多数网站。在某些情况下，您可能需要删除它们（也有可能需要自定义）。
+- SourceForge 现在是原生来源；对于 SourceForge 项目，请使用它而不是 HTML 源。
 - Codeberg：该源的附加选项几乎与 GitHub 相同，并且也支持搜索。
 - F-Droid：任何来自 F-Droid 的应用都可能使用不同的密钥[签名](https://developer.android.com/studio/publish/app-signing)，与其它源的相同应用不同。这意味着从 F-Droid 发布的特定应用更新到来自其它源（如 GitHub）的应用很可能会失败。
 - 腾讯应用宝：来自该源的 APK 可能为纯 32 位（[armeabi-v7a](https://developer.android.com/ndk/guides/abis#v7a)）架构，无法安装在使用较新 Arm 架构 SoC 的某些设备上。
 - itch.io：从 itch.io 下载可能需要处理"自定义定价"页面和 Cloudflare 保护的下载链接。某些应用可能需要通过 HTML 源的请求标头选项配置自定义 Cookie 或标头。
 - 任何没有与之关联的特定服务器的源（如[第三方 F-Droid 仓库](#f-droid-third-party-repo)、Jenkins 和 SourceHut）都不会被 Obtainium 自动识别。您必须从"覆盖来源"下拉菜单中手动选择正确的源。
-- 某些源（如 APKPure）可能提供 [XAPK 文件](https://apkpure.com/xapk.html)而非 APK 文件。Obtainium 的 XAPK 支持不完整，可能无法可靠运行。
+- 某些源（如 APKPure）可能提供 [XAPK 文件](https://apkpure.com/xapk.html)或其他 APK 容器而非普通 APK 文件。Obtainium 支持 XAPK、APKM、APKS 和拆分 APK 安装，但具体行为可能因容器和安装器而异。

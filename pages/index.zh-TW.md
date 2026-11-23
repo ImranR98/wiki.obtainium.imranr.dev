@@ -18,7 +18,7 @@ Obtainium 的核心目標是實現直接從應用程式“源”（可直接下�
 
 您可以在 [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev) 上找到基於社群設定的應用程式設定。
 
-如果找不到想要的應用程式設定，請隨時在[討論頁](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues)上提出議題請求。
+如果找不到想要的應用程式設定，請隨時在[問題頁面](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues)上提出請求。
 
 或者，在[此項目儲存庫](https://github.com/ImranR98/apps.obtainium.imranr.dev)上建立拉取請求，為網站貢獻一些設定。
 
@@ -44,7 +44,7 @@ Obtainium 的核心目標是實現直接從應用程式“源”（可直接下�
 
 ## 應用程式內連結 {#in-app-links}
 
-您可以在 Obtainium 的設定頁面底部找到本 Wiki、原始碼和社群應用程式的設定連結。
+在 Obtainium 中，本 Wiki、應用程式原始碼和應用程式記錄的連結位於「設定」→「關於」中。社群應用程式設定的連結位於「新增應用程式」頁面。
 
 ## 限制 {#limitations}
 

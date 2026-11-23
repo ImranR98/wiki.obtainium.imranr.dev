@@ -17,14 +17,14 @@ The following options are available for all apps regardless of source:
 - Exempt from background updates: This toggle will prevent the app from being updated silently in the background even if background updates are enabled and this app would otherwise have fulfilled all criteria to be updated in the background.
 - Skip update notifications: This toggle tells Obtainium to avoid notifying the user that this app has an update available or that it was updated in the background.
 
-Aside from those, each app has additional source-specific options. Most of those are self-explanatory and may be updated frequently, so they are not covered in this Wiki. However, some sources do have more unique behaviours that need more explanation, and these are covered below.
+Aside from those, each app has additional source-specific options. Most of those are self-explanatory and may be updated frequently, so they are not covered in this Wiki. Additional per-app options now include minimum update age, installation method (System, Shizuku, External, or Root), refresh before download, insecure HTTP requests, and expected signing certificate hashes. However, some sources do have more unique behaviours that need more explanation, and these are covered below.
 
 ## Currently supported App sources
 
 - Open Source - General:
     - [GitHub](https://github.com/)
     - [GitLab](https://gitlab.com/)
-    - [Codeberg](https://codeberg.org/) (Forgejo)
+    - [Forgejo](https://forgejo.org/) ([Codeberg](https://codeberg.org/))
     - [F-Droid](https://f-droid.org/)
     - Third Party F-Droid Repos
     - [IzzyOnDroid](https://android.izzysoft.de/)
@@ -36,12 +36,14 @@ Aside from those, each app has additional source-specific options. Most of those
     - [itch.io](https://itch.io/)
     - [Huawei AppGallery](https://appgallery.huawei.com/)
     - [Tencent App Store](https://sj.qq.com/)
-    - [Vivo App Store](https://h5appstore.vivo.com.cn/)
+    - [Vivo App Store (CN)](https://h5.appstore.vivo.com.cn/)
     - [RuStore](https://rustore.ru/)
-    - [Apk4Free](https://apk4free.net/)
-    - [CoolAPK](https://www.coolapk.com/)
     - [Farsroid](https://farsroid.com/)
+    - [Samsung Galaxy Store](https://galaxystore.samsung.com/)
     - [LiteAPKs](https://liteapks.com/)
+    - [APK4Free](https://apk4free.net/)
+    - [CoolAPK](https://www.coolapk.com/)
+    - [SourceForge](https://sourceforge.net/)
     - Jenkins Jobs
     - [APKMirror](https://apkmirror.com/) (Track-Only)
     - [RockMods](https://rockmods.net/) (Track-Only)
@@ -64,6 +66,8 @@ Some additional options have less obvious behaviour:
 - **Use Latest Asset Date as Release Date**: When enabled, the release date shown will reflect the date of the most recently uploaded asset within a release rather than the release's own publication date.
 - **Check for Repo Rename**: If enabled, Obtainium will detect when a repository has been renamed and prompt you to update the app's URL accordingly.
 
+Additional options allow including pre-releases or drafts, filtering release titles/notes by regex, and using the release title as the version string.
+
 You can also provide a **GitHub Proxy Prefix** (e.g. `gh-proxy.com`) in the source-specific settings. When set, all GitHub API requests will be routed through that proxy, which can help with rate limiting or accessibility issues in some regions.
 
 The GitHub source supports **search** and lets you filter results by a minimum star count.
@@ -84,7 +88,7 @@ The GitHub source supports **search** and lets you filter results by a minimum s
 
 ## GitLab
 
-GitLab releases sometimes contain APKs that are attached in non-standard ways, such that Obtainium cannot get to them easily. The GitLab API provides a far more reliable way to extract APKs but it cannot be used without an API key. While this shouldn't be an issue for most GitLab repos, you can add your own Personal Access Token in Obtainium's settings for more reliable APK extraction in edge cases where it does turn out to be a problem.
+GitLab releases sometimes contain APKs that are attached in non-standard ways, such that Obtainium cannot get to them easily. The GitLab API provides a far more reliable way to extract APKs. Public repositories generally work without authentication, but a Personal Access Token can help with private repositories and edge cases. You can add your own Personal Access Token in Obtainium's settings.
 
 Just like GitHub, GitLab also allows developers to host older releases of the same app, so additional options are provided as appropriate.
 
@@ -111,7 +115,7 @@ Just like GitHub, GitLab also allows developers to host older releases of the sa
 
 ## F-Droid Third Party Repo
 
-Unlike with most other sources, F-Droid repos contain info about multiple apps all under the same URL. This means that, in addition to the repo URL, you must provide the name or ID of the app you want separately in the "App ID or Name" field. If you're not sure what apps are available in a given repo, you can use the "Search Source" button on the [Import/Export page](ui_overview.md/#importexport-page) to find out.
+Unlike with most other sources, F-Droid repos contain info about multiple apps all under the same URL. This means that, in addition to the repo URL, you must provide the name or ID of the app you want separately in the "App ID or Name" field. If you're not sure what apps are available in a given repo, you can use the search on the [Add App page](ui_overview.md/#add-app-page) to find out.
 
 Note that Obtainium cannot automatically tell that a given URL points to a third-party F-Droid repo. This means that by default, adding a third-party F-Droid repo to Obtainium will result in the incorrect use of the [HTML source](#html) (a fallback source Obtainium uses for any URL it does not recognize). You must manually select "F-Droid Third Party Repo" from the "Override Source" dropdown to get around this.
 
@@ -124,6 +128,14 @@ The additional version selection options have distinct behaviour:
 
 APKMirror is a "Track-Only" source. This means that while you can add an APKMirror URL to Obtainium for update notifications, you will not be able to actually download and install the app. This is because the maintainers of APKMirror do not allow it (see [issue #44](https://github.com/ImranR98/Obtainium/issues/44)).
 
+## Samsung Galaxy Store
+
+Samsung Galaxy Store is supported as a native source. Add a Galaxy Store app URL, or search for apps from the Add App page. The source has Global and China search profiles. Device model and CSC options can be used to request the correct variant for your device, and some apps require a Samsung account and cannot be downloaded anonymously. When using Shizuku or Root, an option is available to set Samsung Galaxy Store as the installation source.
+
+## SourceForge
+
+SourceForge is supported as a native source that reads a project's RSS feed. Add the project page URL, or a path under its files section. Obtainium extracts the version from the release path and picks the matching APK/container files.
+
 ## HTML
 
 The 'HTML' source is a fallback option for any app sources that are not explicitly supported by Obtainium. Because of its flexibility, it is also a way of supporting niche, less popular sources without bloating the app.
@@ -131,11 +143,11 @@ The 'HTML' source is a fallback option for any app sources that are not explicit
 The HTML Source works in this way:
 
 1. It sends a request to the source URL provided by the user, and parses the response as HTML. It then looks for links on the page.
-2. It filters out certain links. By default, this is any link that doesn't end in `.apk` but you can use "Custom APK Link Filter" to specify your own filter.
+2. It filters out certain links. By default, this is any link that doesn't point to an APK or APK container (`.apk`, `.xapk`, `.apkm`, or `.apks`) but you can use "Custom APK Link Filter" to specify your own filter.
 3. It sorts the remaining links. This sorting is alphanumeric sorting on the whole link, but you can choose to sort by only the last segment of the link. This last segment is usually the filename but may not be if you used your own filter in step 2.
 4. It applies yet another optional user-defined filter on all remaining links. The difference between this filter and the one from step 2 is that this one is a more general filter that all Sources have - it is inherited from the parent `AppSource` class (the APK filter option described in [App Sources](#app-sources)). It's probably easier to use this in some situations rather than having a single more complicated regular expression in step 2 (see [this comment](https://github.com/ImranR98/Obtainium/issues/954#issuecomment-1745977857) for an example). It is also useful when used in combination with the intermediate link option.
 5. Of the remaining links, it picks the first one (or the last one if you enabled the reverse option).
-6. Now that we have the final APK link, we need a unique release ID to go with it so that when the ID changes, we know the app has an update available. For other Sources, the unique release ID is the app version, but for the HTML Source, it might not be possible to extract a version string. By default, this is just a hash of the link. There are three pseudo-versioning methods available:
+6. Now that we have the final APK link, we need a unique release ID to go with it so that when the ID changes, we know the app has an update available. For other Sources, the unique release ID is the app version, but for the HTML Source, it might not be possible to extract a version string. By default, this is a hash of a portion of the APK file itself. There are three pseudo-versioning methods available:
     - **Partial APK Hash** (default): A hash of a portion of the APK file itself. This is more reliable than the URL hash because it depends on the file content, not the URL, but requires downloading part of the APK to compute.
     - **APK Link Hash**: A hash of the APK download URL. This changes whenever the URL changes.
     - **ETag**: Uses the HTTP ETag header from the APK download response. This can be useful when the server provides stable ETags but the download URL itself does not change between versions.
@@ -145,6 +157,8 @@ The HTML Source works in this way:
     - The version extraction feature isn't really necessary - using link hashes is easier and more reliable. Some users might just want it since having the real version looks nicer/more accurate and it allows Obtainium, in most cases, to use [version detection](app_tracking.md/#version-detection).
 
 You can also set **custom request headers** for the HTML source. This allows you to override the default headers (e.g. User-Agent) when the target website requires specific headers to serve the APK correctly.
+
+For sites that display a release date on the HTML page, the HTML source can extract it with a release date regex, match group, and date format. The extracted date can be used as a version when "Use release date as version string" is enabled.
 
 As for the **Intermediate Link** filter, if this is used (see [issue #820](https://github.com/ImranR98/Obtainium/issues/820) for a situation where this is useful), the HTML source adds a preliminary step before the normal process:
 
@@ -161,9 +175,10 @@ The intermediate link step has its own sub-options for controlling how links are
 
 ## Notes for Various Other Sources
 
-- HTML: The HTML source includes default request headers that should be appropriate for most sites. In some cases (for example [SourceForge](https://sourceforge.net/)), you may need to delete them (and possibly specify your own).
+- HTML: The HTML source includes default request headers that should be appropriate for most sites. In some cases, you may need to delete them (and possibly specify your own).
+- SourceForge is now a native source; use it instead of the HTML source for SourceForge projects.
 - Codeberg: This source is almost identical to GitHub in its additional options and also supports search.
 - F-Droid: Any app from F-Droid is likely to be [signed](https://developer.android.com/studio/publish/app-signing) with a different key than releases of the same app from other sources. This means that trying to update from an F-Droid release of a given app to a release from another source (for example GitHub) is likely to fail.
 - Tencent App Store: APKs from this source may be of pure 32-bit ([armeabi-v7a](https://developer.android.com/ndk/guides/abis#v7a)) architecture and cannot be installed on some devices using newer Arm architecture SoCs.
 - Any source that does not have a specific host associated with it (like [third-party F-Droid repos](#f-droid-third-party-repo), Jenkins instances, and SourceHut instances) will not be automatically recognized by Obtainium. You must manually pick the right source from the "Override Source" dropdown.
-- Some sources (like APKPure) may provide [XAPK files](https://apkpure.com/xapk.html) instead of APK files. Obtainium's XAPK support is incomplete and may not work reliably.
+- Some sources (like APKPure) may provide [XAPK files](https://apkpure.com/xapk.html) or other APK containers instead of plain APK files. Obtainium supports XAPK, APKM, APKS, and split APK installs, but behavior can vary depending on the container and installer.

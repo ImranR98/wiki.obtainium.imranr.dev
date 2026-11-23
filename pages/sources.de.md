@@ -24,7 +24,7 @@ Abgesehen davon hat jede Anwendung zusätzliche quellenspezifische Optionen. Die
 - Open Source - Allgemein:
     - [GitHub](https://github.com/)
     - [GitLab](https://gitlab.com/)
-    - [Codeberg](https://codeberg.org/) (Forgejo)
+    - [Forgejo](https://forgejo.org/) ([Codeberg](https://codeberg.org/))
     - [F-Droid](https://f-droid.org/)
     - F-Droid-Repos von Drittanbietern
     - [IzzyOnDroid](https://android.izzysoft.de/)
@@ -36,12 +36,14 @@ Abgesehen davon hat jede Anwendung zusätzliche quellenspezifische Optionen. Die
     - [itch.io](https://itch.io/)
     - [Huawei AppGallery](https://appgallery.huawei.com/)
     - [Tencent App Store](https://sj.qq.com/)
-    - [Vivo App Store](https://h5appstore.vivo.com.cn/)
+    - [Vivo App Store (CN)](https://h5.appstore.vivo.com.cn/)
     - [RuStore](https://rustore.ru/)
+    - [Farsroid](https://farsroid.com/)
+    - [Samsung Galaxy Store](https://galaxystore.samsung.com/)
+    - [LiteAPKs](https://liteapks.com/)
     - [Apk4Free](https://apk4free.net/)
     - [CoolAPK](https://www.coolapk.com/)
-    - [Farsroid](https://farsroid.com/)
-    - [LiteAPKs](https://liteapks.com/)
+    - [SourceForge](https://sourceforge.net/)
     - Jenkins Jobs
     - [APKMirror](https://apkmirror.com/) (Nur Nachverfolgen)
     - [RockMods](https://rockmods.net/) (Nur Nachverfolgen)
@@ -79,7 +81,7 @@ Die GitHub-Quelle unterstützt die **Suche** und ermöglicht es Ihnen, die Ergeb
 
 ## GitLab
 
-GitLab-Versionen enthalten manchmal APKs, die auf nicht standardmäßige Weise angehängt sind, sodass Obtainium nicht einfach darauf zugreifen kann. Die GitLab-API bietet eine weitaus zuverlässigere Methode zum Extrahieren von APKs, kann aber ohne einen API-Schlüssel nicht verwendet werden. Während dies für die meisten GitLab-Repos kein Problem sein sollte, können Sie in den Obtainium-Einstellungen ein eigenes persönliches Zugriffstoken hinzufügen, um in Randfällen eine zuverlässigere APK-Extraktion zu ermöglichen.
+GitLab-Versionen enthalten manchmal APKs, die auf nicht standardmäßige Weise angehängt sind, sodass Obtainium nicht einfach darauf zugreifen kann. Die GitLab-API bietet eine weitaus zuverlässigere Methode zum Extrahieren von APKs. Öffentliche Repositories funktionieren in der Regel ohne Authentifizierung; ein persönliches Zugriffstoken kann bei privaten Repositories und Sonderfällen helfen. Sie können in den Obtainium-Einstellungen ein eigenes persönliches Zugriffstoken hinzufügen.
 
 Genau wie bei GitHub können Entwickler auch bei GitLab ältere Versionen derselben App hosten, daher werden bei Bedarf zusätzliche Optionen angeboten.
 
@@ -98,7 +100,7 @@ Genau wie bei GitHub können Entwickler auch bei GitLab ältere Versionen dersel
 
 ## F-Droid-Repos von Drittanbietern
 
-Im Gegensatz zu den meisten anderen Quellen enthalten F-Droid-Repos Informationen über mehrere Apps unter derselben URL. Das bedeutet, dass Sie zusätzlich zur Repo-URL den Namen oder die ID der gewünschten App separat im Feld "App-ID oder -Name" angeben müssen. Wenn Sie nicht sicher sind, welche Apps in einem bestimmten Repo verfügbar sind, können Sie die Schaltfläche "Quelle durchsuchen" auf der [Import/Export-Seite](ui_overview.de.md/#„Import/Export“-Registerkarte) verwenden.
+Im Gegensatz zu den meisten anderen Quellen enthalten F-Droid-Repos Informationen über mehrere Apps unter derselben URL. Das bedeutet, dass Sie zusätzlich zur Repo-URL den Namen oder die ID der gewünschten App separat im Feld "App-ID oder -Name" angeben müssen. Wenn Sie nicht sicher sind, welche Apps in einem bestimmten Repo verfügbar sind, können Sie die Suche auf der Seite [App hinzufügen](ui_overview.de.md/#add-app-page) verwenden.
 
 Beachten Sie, dass Obtainium nicht automatisch erkennen kann, ob eine bestimmte URL auf ein F-Droid-Repo eines Drittanbieters verweist. Das Hinzufügen eines solchen Repos zu Obtainium führt standardmäßig zur falschen Verwendung der [HTML-Quelle](#html). Sie müssen manuell "F-Droid-Repo eines Drittanbieters" aus dem Dropdown-Menü "Quelle überschreiben" auswählen.
 
@@ -113,6 +115,14 @@ APKMirror ist eine "Nur Nachverfolgen"-Quelle. Das bedeutet, dass Sie zwar eine 
 
 Da APKMirror einen RSS-Feed zur Erkennung neuer Versionen verwendet, können Sie die verfolgten Versionen mit der Option "Release-Titel nach regulärem Ausdruck filtern" eingrenzen.
 
+## Samsung Galaxy Store
+
+Samsung Galaxy Store wird als native Quelle unterstützt. Fügen Sie eine Galaxy-Store-App-URL hinzu oder suchen Sie auf der Seite „App hinzufügen“ nach Apps. Die Quelle bietet Suchprofile für Global und China. Mit den Optionen für Gerätemodell und CSC kann die richtige Variante für Ihr Gerät angefordert werden; einige Apps erfordern ein Samsung-Konto und können nicht anonym heruntergeladen werden. Bei Verwendung von Shizuku oder Root steht eine Option zur Verfügung, um Samsung Galaxy Store als Installationsquelle festzulegen.
+
+## SourceForge
+
+SourceForge wird als native Quelle unterstützt, die den RSS-Feed eines Projekts liest. Fügen Sie die Projektseite oder einen Pfad unterhalb des Dateibereichs hinzu. Obtainium extrahiert die Version aus dem Release-Pfad und wählt die passenden APK-/Container-Dateien aus.
+
 ## HTML
 
 Die "HTML"-Quelle ist eine Fallback-Option für alle App-Quellen, die nicht explizit von Obtainium unterstützt werden. Aufgrund ihrer Flexibilität ist sie auch eine Möglichkeit, Nischen- und weniger bekannte Quellen zu unterstützen, ohne die App aufzublähen.
@@ -120,20 +130,22 @@ Die "HTML"-Quelle ist eine Fallback-Option für alle App-Quellen, die nicht expl
 Die HTML-Quelle funktioniert wie folgt:
 
 1. Sie sendet eine Anfrage an die vom Benutzer angegebene Quell-URL und parst die Antwort als HTML. Dann sucht sie nach Links auf der Seite.
-2. Sie filtert bestimmte Links heraus. Standardmäßig werden alle Links herausgefiltert, die nicht auf `.apk` enden, aber Sie können "Benutzerdefinierter APK-Link-Filter" verwenden, um Ihren eigenen Filter anzugeben.
+2. Sie filtert bestimmte Links heraus. Standardmäßig werden alle Links herausgefiltert, die nicht auf eine APK oder einen APK-Container (`.apk`, `.xapk`, `.apkm` oder `.apks`) verweisen, aber Sie können "Benutzerdefinierter APK-Link-Filter" verwenden, um Ihren eigenen Filter anzugeben.
 3. Sie sortiert die verbleibenden Links. Diese Sortierung ist eine alphanumerische Sortierung des gesamten Links, aber Sie können wählen, ob Sie nur nach dem letzten Segment des Links sortieren möchten. Dieses letzte Segment ist normalerweise der Dateiname, kann aber auch anders sein, wenn Sie in Schritt 2 Ihren eigenen Filter verwendet haben.
 4. Sie wendet einen weiteren optionalen benutzerdefinierten Filter auf alle verbleibenden Links an. Der Unterschied zwischen diesem Filter und dem aus Schritt 2 besteht darin, dass dieser ein allgemeinerer Filter ist, den alle Quellen haben - er wird von der übergeordneten `AppSource`-Klasse geerbt. Er ist wahrscheinlich in manchen Situationen einfacher zu verwenden, als einen einzigen komplizierteren regulären Ausdruck in Schritt 2 zu haben. Er ist auch nützlich, wenn er in Kombination mit der Zwischenlink-Option verwendet wird.
 5. Von den verbleibenden Links wird der erste ausgewählt (oder der letzte, wenn Sie die umgekehrte Option aktiviert haben).
-6. Nachdem wir den endgültigen APK-Link haben, benötigen wir eine eindeutige Release-ID, damit wir erkennen können, wann ein Update verfügbar ist. Bei anderen Quellen ist die eindeutige Release-ID die App-Version, aber bei der HTML-Quelle ist es möglicherweise nicht möglich, eine Versionszeichenfolge zu extrahieren. Standardmäßig wird daher ein Hash des Links verwendet. Es stehen drei Pseudoversionierungsmethoden zur Verfügung:
+6. Nachdem wir den endgültigen APK-Link haben, benötigen wir eine eindeutige Release-ID, damit wir erkennen können, wann ein Update verfügbar ist. Bei anderen Quellen ist die eindeutige Release-ID die App-Version, aber bei der HTML-Quelle ist es möglicherweise nicht möglich, eine Versionszeichenfolge zu extrahieren. Standardmäßig wird daher ein Hash eines Teils der APK-Datei verwendet. Es stehen drei Pseudoversionierungsmethoden zur Verfügung:
     - **Partieller APK-Hash** (Standard): Ein Hash eines Teils der APK-Datei selbst. Dies ist zuverlässiger als der URL-Hash, da er vom Dateiinhalt und nicht von der URL abhängt, erfordert aber das Herunterladen eines Teils der APK.
     - **APK-Link-Hash**: Ein Hash der APK-Download-URL. Dieser ändert sich, wenn sich die URL ändert.
     - **ETag**: Verwendet den HTTP-ETag-Header aus der APK-Download-Antwort. Dies kann nützlich sein, wenn der Server stabile ETags bereitstellt, sich die Download-URL selbst jedoch zwischen den Versionen nicht ändert.
     - Links enthalten oft Versionszeichenfolgen. Obtainium kann nicht selbstständig erkennen, wie diese extrahiert werden können (verschiedene Websites haben unterschiedliche Methoden), daher kann der Benutzer einen regulären Ausdruck angeben, der auf den Link angewendet wird, um die Version zu extrahieren - dies ist das Feld "Versionsextraktion".
     - Oft ist es schwierig, einen regulären Ausdruck zu erstellen, der die Version genau erfasst und gleichzeitig zusätzliche Zeichen ausschließt. Dafür gibt es die Option "Übereinstimmungsgruppe", mit der der Benutzer festlegen kann, welche Gruppe des regulären Ausdrucks als Version verwendet werden soll.
     - Es gibt auch eine Option "Version auf gesamter Seite extrahieren". Wenn aktiviert, versucht Obtainium, eine Versionszeichenfolge irgendwo auf der HTML-Seite zu finden, anstatt nur in der Link-URL. Dies ist nützlich, wenn die Version auf der Seite angezeigt wird, aber nicht in den Download-Link eingebettet ist.
-    - Die Funktion zur Versionsextraktion ist nicht wirklich notwendig - die Verwendung von Link-Hashes ist einfacher und zuverlässiger. Einige Benutzer möchten sie vielleicht, weil die echte Version ansprechender/genauer aussieht und Obtainium in den meisten Fällen die [Versionserkennung](app_tracking.de.md/#versionserkennung) ermöglicht.
+    - Die Funktion zur Versionsextraktion ist nicht wirklich notwendig - die Verwendung von Link-Hashes ist einfacher und zuverlässiger. Einige Benutzer möchten sie vielleicht, weil die echte Version ansprechender/genauer aussieht und Obtainium in den meisten Fällen die [Versionserkennung](app_tracking.de.md/#version-detection) ermöglicht.
 
 Sie können auch **benutzerdefinierte Anforderungsheader** für die HTML-Quelle festlegen. Dies ermöglicht es Ihnen, die Standard-Header (z. B. User-Agent) zu überschreiben, wenn die Zielwebsite bestimmte Header benötigt, um die APK korrekt auszuliefern.
+
+Wenn eine Website ein Veröffentlichungsdatum auf der HTML-Seite anzeigt, kann die HTML-Quelle es mit einem Regex für das Veröffentlichungsdatum, einer Übereinstimmungsgruppe und einem Datumsformat extrahieren. Das extrahierte Datum kann als Version verwendet werden, wenn "Veröffentlichungsdatum als Version verwenden" aktiviert ist.
 
 Was den **Zwischenlink**-Filter betrifft, so fügt die HTML-Quelle, wenn dieser verwendet wird, einen vorbereitenden Schritt vor dem normalen Prozess ein:
 
@@ -150,10 +162,11 @@ Der Zwischenlink-Schritt hat seine eigenen Unteroptionen zur Steuerung der Filte
 
 ## Hinweise zu verschiedenen anderen Quellen
 
-- HTML: Die HTML-Quelle enthält Standard-Anforderungsheader, die für die meisten Websites geeignet sein sollten. In einigen Fällen (z. B. [SourceForge](https://sourceforge.net/)) müssen Sie diese möglicherweise löschen (und gegebenenfalls eigene angeben).
+- HTML: Die HTML-Quelle enthält Standard-Anforderungsheader, die für die meisten Websites geeignet sein sollten. In einigen Fällen müssen Sie diese möglicherweise löschen (und gegebenenfalls eigene angeben).
+- SourceForge ist jetzt eine native Quelle; verwenden Sie sie für SourceForge-Projekte anstelle der HTML-Quelle.
 - Codeberg: Diese Quelle ist in ihren zusätzlichen Optionen fast identisch mit GitHub und unterstützt auch die Suche.
 - F-Droid: Jede App von F-Droid wird wahrscheinlich mit einem anderen [Schlüssel signiert](https://developer.android.com/studio/publish/app-signing) als Versionen derselben App aus anderen Quellen. Dies bedeutet, dass der Versuch, von einer F-Droid-Version einer App auf eine Version aus einer anderen Quelle (z. B. GitHub) zu aktualisieren, wahrscheinlich fehlschlagen wird.
 - Tencent App Store: APKs aus dieser Quelle können reine 32-Bit-Architektur ([armeabi-v7a](https://developer.android.com/ndk/guides/abis#v7a)) sein und können auf einigen Geräten mit neueren Arm-Architektur-SoCs nicht installiert werden.
 - itch.io: Downloads von itch.io erfordern möglicherweise die Handhabung von "Name your price"-Seiten und Cloudflare-geschützten Download-URLs. Einige Apps erfordern möglicherweise benutzerdefinierte Cookies oder Header, die über die Anforderungsheader-Optionen der HTML-Quelle konfiguriert werden müssen.
 - Alle Quellen, die keinen bestimmten Host haben (wie [F-Droid-Repos von Drittanbietern](#f-droid-repos-von-drittanbietern), Jenkins-Instanzen und SourceHut-Instanzen), werden von Obtainium nicht automatisch erkannt. Sie müssen die richtige Quelle manuell aus dem Dropdown-Menü "Quelle überschreiben" auswählen.
-- Einige Quellen (wie APKPure) bieten möglicherweise [XAPK-Dateien](https://apkpure.com/xapk.html) anstelle von APK-Dateien an. Die XAPK-Unterstützung von Obtainium ist unvollständig und funktioniert möglicherweise nicht zuverlässig.
+- Einige Quellen (wie APKPure) bieten möglicherweise [XAPK-Dateien](https://apkpure.com/xapk.html) oder andere APK-Container anstelle von APK-Dateien an. Obtainium unterstützt XAPK, APKM, APKS und die Installation von Split-APKs, das Verhalten kann jedoch je nach Container und Installer variieren.

@@ -19,7 +19,7 @@ While this concept is simple, the wide variety of supported sources, user prefer
 
 You can find crowdsourced app configurations at [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev).
 
-If you can't find the configuration for an app you want, feel free to leave a request on the [discussions page](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues).
+If you can't find the configuration for an app you want, feel free to leave a request on the [issues page](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues).
 
 Or, contribute some configurations to the website by creating a PR at [this repo](https://github.com/ImranR98/apps.obtainium.imranr.dev).
 
@@ -45,7 +45,7 @@ Or, contribute some configurations to the website by creating a PR at [this repo
 
 ## In-App Links
 
-You can find a link to this wiki, along with links to the source code and crowdsourced app configurations, in the footer of the Settings page within Obtainium.
+In Obtainium, links to this wiki, the app source code, and the app logs are available under Settings → About. The crowdsourced app configurations link is on the Add App page.
 
 ## Limitations
 - For some sources, data is gathered using Web scraping and can easily break due to changes in website design. In such cases, more reliable methods may be unavailable.

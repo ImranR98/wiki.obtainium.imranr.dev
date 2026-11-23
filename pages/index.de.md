@@ -15,7 +15,7 @@ Dieses Konzept ist zwar einfach, aber die große Vielfalt an unterstützten Quel
 
 ## App-Konfigurationen finden
 
-Von der Gemeinschaft erstellte App-Konfigurationen finden Sie unter [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev). Wenn Sie die Konfiguration für eine gewünschte Anwendung nicht finden können, können Sie eine Anfrage im zugehörigen [Diskussionsregisterkarte](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues) stellen oder Sie tragen selbst eigene Konfigurationen zur Website bei, indem Sie einen Pull-Request in [diesem Repository](https://github.com/ImranR98/apps.obtainium.imranr.dev) erstellen.
+Von der Gemeinschaft erstellte App-Konfigurationen finden Sie unter [apps.obtainium.imranr.dev](https://apps.obtainium.imranr.dev). Wenn Sie die Konfiguration für eine gewünschte Anwendung nicht finden können, können Sie eine Anfrage auf der [Issues-Seite](https://github.com/ImranR98/apps.obtainium.imranr.dev/issues) stellen oder Sie tragen selbst eigene Konfigurationen zur Website bei, indem Sie einen Pull-Request in [diesem Repository](https://github.com/ImranR98/apps.obtainium.imranr.dev) erstellen.
 
 ## Installation
 
@@ -39,7 +39,7 @@ Von der Gemeinschaft erstellte App-Konfigurationen finden Sie unter [apps.obtain
 
 ## In-App-Links
 
-Sie finden einen Link zu diesem Wiki sowie Links zum Quellcode und zu von der Gemeinschaft erstellten App-Konfigurationen in der Fußzeile der Einstellungsseite in Obtainium.
+In Obtainium finden Sie Links zu diesem Wiki, zum App-Quellcode und zu den App-Protokollen unter Einstellungen → Über. Der Link zu den von der Gemeinschaft erstellten App-Konfigurationen befindet sich auf der Seite „App hinzufügen“.
 
 ## Limitierungen
 - Bei einigen Quellen werden die Daten mit Hilfe von Web Scraping gesammelt und die Konfigurationen können aufgrund von Änderungen am Design der Website leicht beschädigt werden. In solchen Fällen sind zuverlässigere Methoden nicht verfügbar.

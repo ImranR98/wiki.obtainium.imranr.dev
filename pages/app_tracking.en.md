@@ -42,16 +42,16 @@ When Obtainium is tracking an app that is currently installed, it grabs the vers
 3. [Tor](https://www.torproject.org/download/) from the Tor website:
 
     - **Android-reported app version:** `102.2.1-Release (12.5.6)`
-    - **Source-reported version:** none (no version string is provided by this HTML source so a URL hash is used instead as a 'pseudo-version')
+    - **Source-reported version:** none (no version string is provided by this HTML source so a hash-based 'pseudo-version' is used instead)
 
 4. [Quotable](https://github.com/Lijukay/Qwotable/releases/tag/v10) from GitHub:
 
     - **Android-reported app version:** `1`
     - **Source-reported version:** `v10`
 
-Obtainium stores a list of "standard" formats which it uses to make this comparison (like `x.y.z` or `x.y`). If both versions being compared conform to the same format, the comparison will be made. If not, version detection will be disabled for that app. In some cases, Obtainium will strip off extra parts from the source string if doing so would result in a standard version (like how `v` and `-beta` are removed from Obtainium's `v0.14.21-beta`), then it can make the comparison. We never try to strip parts off the "real" OS-provided version.
+Obtainium stores a list of "standard" formats which it uses to make this comparison (like `x.y.z` or `x.y`). If both versions being compared conform to the same format, the comparison will be made. If not, version detection will be disabled for that app. Obtainium also ignores cosmetic differences such as a leading `v` or `-release`/`-debug` suffixes, but pre-release qualifiers such as `beta` remain significant. A few store-based sources use a looser comparison instead. We never try to strip parts off the "real" OS-provided version.
 
-[This piece of code](https://github.com/ImranR98/Obtainium/blob/main/lib/providers/apps_provider.dart#L96) defines how the various "standard" formats are generated.
+[This part of the code](https://github.com/ImranR98/Obtainium/blob/main/lib/services/version_service.dart) defines how the various "standard" formats are generated and compared; [this file](https://github.com/ImranR98/Obtainium/blob/main/lib/utils/version_normalization.dart) handles cosmetic normalization.
 
 It's always possible to expand that code to add support for more formats, but this requires careful consideration. For example if Android reports that an installed app's version is `1.2` but the source says the latest available version of that app is `1.2-4`, should we strip off the `-4` and say the two are the same (meaning there is no update available)? This may be fine in some contexts (where the `-4` is not actually indicative of a change in the app itself) but not in other contexts. So it wouldn't be a good idea to support that specific case.
 
@@ -62,10 +62,12 @@ Version detection being turned off should not usually have a significant impact 
 
 In such cases, Obtainium would not be able to detect that the app's real OS version has changed and so it would not update its internal records accordingly - you would need to manually correct the inconsistency.
 
-Two additional per-app options can affect how versions are handled:
+Several additional per-app options can affect how versions are handled:
 
+- **Reconcile version string with version detected from OS**: Enabled by default. Disable it if version detection causes incorrect results for a specific app.
 - **Use Version Code as OS Version**: When enabled, Obtainium will use the Android version code (a number) instead of the version name string when comparing against the source. This can resolve mismatches when the source provides version codes but the OS reports version names, or vice versa.
 - **Release Date as Version**: Available for many sources, this toggle treats the release date as a pseudo-version instead of the version string from the source. This is useful when the source does not provide meaningful version information but the release date is reliable.
+- **Trim version string with RegEx**: Extracts a version from a longer string. A global version-trimming regex can also be set in Settings → Updates.
 
 See also: [Obtainium Issue #946 Comment](https://github.com/ImranR98/Obtainium/issues/946#issuecomment-1741745587)
 
@@ -73,15 +75,13 @@ See also: [Obtainium Issue #946 Comment](https://github.com/ImranR98/Obtainium/i
 
 Obtainium checks for app updates in the background on a regular basis. You can control the frequency of these update tasks on the settings page.
 
-Background update checking can run through one of two mechanisms:
+Background update checking uses Android's WorkManager. This is battery-efficient but may be delayed by some OEMs' battery optimisation policies; disabling battery optimization for Obtainium can improve reliability.
 
-- **WorkManager** (default): Uses Android's standard background task scheduler. This is battery-efficient but may be delayed by some OEMs' battery optimisation policies.
-- **Foreground Service** (optional): Runs as a persistent foreground service with a notification. This can be more reliable on devices that aggressively restrict background work, at the cost of a persistent notification. Requires Android 11+.
+Background checks and silent installs are controlled separately. The update interval controls when Obtainium checks for new releases, while "Enable background silent installs" controls whether Obtainium may install them silently.
 
-You can restrict when background checks occur:
+You can restrict background work based on network and charging state. Each restriction has three modes: **Nothing** (skip background work), **Check only**, and **Check and update**.
 
-- **Wi-Fi only**: Only check for updates when connected to a Wi-Fi network.
-- **While charging only**: Only check for updates when the device is charging.
+A minimum update age can be set globally or per app under Settings → Updates to delay or suppress very recent releases.
 
 You can also choose to check for updates every time the app is opened ("Check on start"), and/or every time you view an app's detail page.
 
@@ -92,16 +92,22 @@ After a background update checking task is completed, any available updates are 
 1. Updates that can be applied in the background
 2. Updates that cannot be applied in the background
 
-For an update to be automatically installed in the background (AKA a silent update), certain criteria should be met:
+With the default System installer, an update can be installed silently in the background when:
 
 - The OS must be Android 12 or higher
 - The app being installed must target a [recent Android API level](https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int))
 - The currently installed version of the app must have been installed by Obtainium
-- You must have background updates enabled in Obtainium (both universally and for this app in particular - this is the default)
+- Background silent installs must be enabled in Obtainium and the app must not be exempted from background updates
 - If there are multiple APKs available for the update, the additional options for that app must be configured such that Obtainium can filter these down to one APK
+
+Shizuku (with either the Shizuku or Dhizuku backend) and Root can perform silent installs under their own permission rules, which may avoid some of the System installer's restrictions. The External installer always requires user interaction and cannot install silently.
 
 Each available update is downloaded and installed if possible, and the user is then notified either of the update's availability or that it was installed in the background.
 
-By default, Obtainium downloads and installs updates one at a time. Enabling parallel downloads will process multiple updates simultaneously, which can speed up bulk updates but may use more network bandwidth and system resources.
+By default, parallel downloads are enabled. You can disable them under Settings → Updates to process updates one at a time, which uses less network bandwidth and system resources.
 
-Note that due to technical limitations, background updates can only be installed on an asynchronous, best-effort basis. So if a background update fails to install, you will not be notified of the error.
+Note that due to technical limitations, background updates can only be installed on an asynchronous, best-effort basis. Success may only be confirmed the next time Obtainium is opened, and failures may be reported in an aggregated notification.
+
+## Update Health
+
+Settings → Update Health flags apps whose latest release or version is stale, that repeatedly fail update checks, whose source is archived, or whose filters hide newer releases. Detection thresholds can be adjusted, and per-app overrides are available in the app options.
